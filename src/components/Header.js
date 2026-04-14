@@ -13,7 +13,7 @@ export function renderHeader(mountEl) {
       <div class="flex items-center gap-5">
         <nav class="hidden sm:flex gap-6 text-sm text-on-surface-muted">
           <a href="#/" style="text-decoration:none" class="hover:text-on-surface transition-colors text-on-surface-muted">Tools</a>
-          <a href="https://github.com/netc-labs" target="_blank" rel="noopener"
+          <a href="https://github.com/netc-fleet-services" target="_blank" rel="noopener"
              style="text-decoration:none" class="hover:text-on-surface transition-colors text-on-surface-muted">GitHub</a>
         </nav>
         <div id="theme-toggle-slot"></div>

@@ -1,51 +1,28 @@
 function buildPreview(tool) {
   switch (tool.previewType) {
-    case 'form':
+    case 'fleet-swap':
       return `
-        <div class="preview-mockup">
-          <div class="mockup-field" style="width:100%"></div>
-          <div class="mockup-field" style="width:70%"></div>
-          <div class="mockup-field" style="width:85%"></div>
-          <div class="mockup-row" style="margin-top:0.25rem">
-            <div class="mockup-chip">Stop 1</div>
-            <div class="mockup-chip">Stop 2</div>
-            <div class="mockup-chip">Stop 3</div>
-          </div>
-          <div class="mockup-btn" style="margin-top:0.5rem">Optimize Route →</div>
-        </div>`;
-
-    case 'table':
-      return `
-        <div class="preview-mockup">
-          <div class="mockup-table-header mockup-row" style="margin-bottom:0.3rem">
-            <div class="mockup-cell" style="flex:1"></div>
-            <div class="mockup-cell" style="flex:1"></div>
-            <div class="mockup-cell" style="flex:1"></div>
-          </div>
-          ${[0, 1, 2].map(() => `
-            <div class="mockup-table-row mockup-row" style="margin-bottom:0.25rem">
-              <div class="mockup-cell" style="flex:1"></div>
-              <div class="mockup-cell" style="flex:1"></div>
-              <div class="mockup-cell" style="flex:1"></div>
-            </div>`).join('')}
-          <div class="mockup-btn" style="margin-top:0.5rem">Export CSV</div>
-        </div>`;
-
-    case 'converter':
-      return `
-        <div class="preview-mockup">
-          <div class="mockup-row" style="margin-bottom:0.35rem">
-            <div class="mockup-field" style="flex:1"></div>
-            <span style="color:var(--primary);font-size:0.75rem;font-weight:700;padding:0 0.25rem">→</span>
-            <div class="mockup-field" style="flex:1;opacity:0.3"></div>
-          </div>
-          <div class="mockup-row" style="margin-bottom:0.5rem">
-            <div class="mockup-chip">km</div>
-            <div class="mockup-chip">mi</div>
-            <div class="mockup-chip">m</div>
-            <div class="mockup-chip">ft</div>
-          </div>
-          <div class="mockup-result-box">= 62.14 mi</div>
+        <div class="preview-mockup" style="justify-content:center">
+          <svg viewBox="0 0 220 100" style="width:100%;height:auto;display:block;overflow:visible">
+            <!-- grid lines -->
+            <line x1="30" y1="10" x2="210" y2="10" stroke="var(--outline-variant)" stroke-width="0.5"/>
+            <line x1="30" y1="38" x2="210" y2="38" stroke="var(--outline-variant)" stroke-width="0.5"/>
+            <line x1="30" y1="66" x2="210" y2="66" stroke="var(--outline-variant)" stroke-width="0.5"/>
+            <line x1="30" y1="88" x2="210" y2="88" stroke="var(--outline-variant)" stroke-width="0.5"/>
+            <!-- resale value line (declining, blue) -->
+            <path d="M30,12 C60,14 90,22 120,36 C150,50 170,62 210,80"
+              fill="none" stroke="#5B89D6" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- cumulative cost line (rising, orange) -->
+            <path d="M30,86 C55,78 80,66 110,52 C135,40 165,28 210,18"
+              fill="none" stroke="#C2410C" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- crossover dot + dashed line -->
+            <line x1="122" y1="10" x2="122" y2="88" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="122" cy="44" r="4.5" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="1.5"/>
+            <!-- label -->
+            <rect x="128" y="28" width="62" height="20" rx="3" fill="var(--primary-container)"/>
+            <text x="133" y="37" font-family="Inter,sans-serif" font-size="6.5" fill="var(--on-primary-container)" font-weight="600">CROSSOVER</text>
+            <text x="133" y="45" font-family="Inter,sans-serif" font-size="6" fill="var(--on-primary-container)">Year 4 · M3</text>
+          </svg>
         </div>`;
 
     default:

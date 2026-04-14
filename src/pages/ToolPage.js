@@ -85,21 +85,40 @@ export async function renderToolPage(slug) {
 
   renderHeader(document.getElementById('header-mount'));
 
-  // Dynamically import the tool module
+  // Load the tool module.
+  // If the registry entry has a `module` URL (CDN), use that.
+  // Otherwise fall back to a local file under src/tools/<slug>/Tool.js.
+  const moduleSrc = tool.module || `../tools/${slug}/Tool.js`;
+
   try {
-    const module = await import(`../tools/${slug}/Tool.js`);
+    const mod = await import(moduleSrc);
     const mount = document.getElementById('tool-mount');
     mount.innerHTML = '';
-    mount.appendChild(module.Tool());
+    mount.appendChild(mod.Tool());
   } catch (err) {
-    document.getElementById('tool-mount').innerHTML = `
-      <div class="text-center py-12">
-        <p class="text-on-surface text-lg font-semibold mb-2">Tool coming soon</p>
-        <p class="text-on-surface-muted text-sm mb-4">
-          This tool isn't wired up yet. Download the repo to run it locally.
-        </p>
-        <a href="${tool.repo}" target="_blank" rel="noopener" class="btn-secondary text-sm">View on GitHub</a>
-      </div>`;
-    console.error(`[ToolPage] Failed to load tool "${slug}":`, err);
+    // If CDN load fails, attempt local fallback before giving up.
+    let recovered = false;
+    if (tool.module) {
+      try {
+        const mod = await import(`../tools/${slug}/Tool.js`);
+        const mount = document.getElementById('tool-mount');
+        mount.innerHTML = '';
+        mount.appendChild(mod.Tool());
+        recovered = true;
+        console.warn(`[ToolPage] CDN load failed for "${slug}", using local fallback.`);
+      } catch (_) { /* fall through to error state */ }
+    }
+
+    if (!recovered) {
+      document.getElementById('tool-mount').innerHTML = `
+        <div class="text-center py-12">
+          <p class="text-on-surface text-lg font-semibold mb-2">Tool coming soon</p>
+          <p class="text-on-surface-muted text-sm mb-4">
+            This tool isn't wired up yet. Download the repo to run it locally.
+          </p>
+          <a href="${tool.repo}" target="_blank" rel="noopener" class="btn-secondary text-sm">View on GitHub</a>
+        </div>`;
+      console.error(`[ToolPage] Failed to load tool "${slug}":`, err);
+    }
   }
 }

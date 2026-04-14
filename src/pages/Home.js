@@ -19,14 +19,14 @@ export function renderHome() {
           Tool Hub
         </h1>
         <p class="text-on-surface-muted text-lg max-w-xl mx-auto leading-relaxed">
-          Purpose-built tools for trucking &amp; logistics operations.
+          Purpose-built tools for towing &amp; fleet maintenace operations.
           Try them live — or download and customize for your workflow.
         </p>
         <div class="flex justify-center gap-3 mt-8">
           <a href="#tools" class="btn-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'});return false;">
             Browse Tools
           </a>
-          <a href="https://github.com/netc-labs" target="_blank" rel="noopener" class="btn-secondary">
+          <a href="https://github.com/netc-fleet-services" target="_blank" rel="noopener" class="btn-secondary">
             View on GitHub
           </a>
         </div>
@@ -45,9 +45,9 @@ export function renderHome() {
       <footer class="border-t border-outline-variant mt-16 py-10 px-6">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-on-surface-muted">
           <span>© ${new Date().getFullYear()} NETC Labs. All tools are open source.</span>
-          <a href="https://github.com/netc-labs" target="_blank" rel="noopener"
+          <a href="https://github.com/netc-fleet-services" target="_blank" rel="noopener"
              class="text-on-surface-muted hover:text-on-surface transition-colors" style="text-decoration:none">
-            github.com/netc-labs
+            github.com/netc-fleet-services
           </a>
         </div>
       </footer>

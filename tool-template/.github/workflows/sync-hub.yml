@@ -1,0 +1,28 @@
+# Purges the jsDelivr CDN cache whenever hub/Tool.js is updated.
+# This ensures the NETC Labs Tool Hub always serves the latest version
+# within seconds of a push — no manual updates to the hub repo needed.
+#
+# Setup: Copy this file into your tool repo at .github/workflows/sync-hub.yml
+# No secrets or tokens required — jsDelivr's purge API is public.
+
+name: Sync to Tool Hub
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'hub/Tool.js'   # Only runs when the hub integration file changes
+
+jobs:
+  purge-cdn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge jsDelivr cache for hub/Tool.js
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          ORG="netc-fleet-services"
+          URL="https://purge.jsdelivr.net/gh/${ORG}/${REPO}@main/hub/Tool.js"
+          echo "Purging: $URL"
+          curl -s -X POST "$URL" | cat
+          echo ""
+          echo "CDN cache purged — hub will load the latest Tool.js on next visit."
