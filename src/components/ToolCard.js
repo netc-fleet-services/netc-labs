@@ -25,6 +25,71 @@ function buildPreview(tool) {
           </svg>
         </div>`;
 
+    case 'driver-inspections':
+      return `
+        <div class="preview-mockup" style="padding:10px 12px;overflow:hidden">
+          <!-- header row -->
+          <div style="display:flex;gap:6px;margin-bottom:6px;align-items:center">
+            <div style="flex:2;height:7px;border-radius:3px;background:var(--primary);opacity:0.7"></div>
+            <div style="flex:1;height:7px;border-radius:3px;background:var(--outline-variant)"></div>
+            <div style="flex:1;height:7px;border-radius:3px;background:var(--outline-variant)"></div>
+            <div style="flex:1;height:7px;border-radius:3px;background:var(--outline-variant)"></div>
+          </div>
+          <!-- rows -->
+          ${[
+            ['0.85','0.55','1','ok'],
+            ['0.7','0.45','0.9','warn'],
+            ['0.9','0.35','0.8','ok'],
+            ['0.65','0.5','0.85','fail'],
+            ['0.8','0.6','0.95','ok'],
+          ].map(([n,r,c,s]) => {
+            const dot = s==='ok'?'#22c55e':s==='warn'?'#f59e0b':'#ef4444';
+            return `<div style="display:flex;gap:6px;margin-bottom:4px;align-items:center">
+              <div style="flex:2;height:6px;border-radius:3px;background:var(--outline-variant);opacity:${n}"></div>
+              <div style="flex:1;height:6px;border-radius:3px;background:var(--outline-variant);opacity:${r}"></div>
+              <div style="flex:1;height:6px;border-radius:3px;background:var(--outline-variant);opacity:${c}"></div>
+              <div style="flex:1;display:flex;justify-content:center">
+                <div style="width:8px;height:8px;border-radius:50%;background:${dot}"></div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>`;
+
+    case 'maintenance-tracker':
+      return `
+        <div class="preview-mockup" style="padding:10px 12px;gap:5px;overflow:hidden">
+          <!-- Ready -->
+          <div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:6px;padding:5px 8px;margin-bottom:4px">
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">
+              <div style="width:7px;height:7px;border-radius:50%;background:#22c55e"></div>
+              <div style="height:5px;width:50px;border-radius:3px;background:#22c55e;opacity:0.7"></div>
+            </div>
+            <div style="display:flex;gap:4px">
+              ${['42px','36px','50px'].map(w=>`<div style="height:5px;width:${w};border-radius:3px;background:var(--outline-variant)"></div>`).join('')}
+            </div>
+          </div>
+          <!-- Issues -->
+          <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:6px;padding:5px 8px;margin-bottom:4px">
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">
+              <div style="width:7px;height:7px;border-radius:50%;background:#f59e0b"></div>
+              <div style="height:5px;width:60px;border-radius:3px;background:#f59e0b;opacity:0.7"></div>
+            </div>
+            <div style="display:flex;gap:4px">
+              ${['55px','30px'].map(w=>`<div style="height:5px;width:${w};border-radius:3px;background:var(--outline-variant)"></div>`).join('')}
+            </div>
+          </div>
+          <!-- OOS -->
+          <div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:5px 8px">
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">
+              <div style="width:7px;height:7px;border-radius:50%;background:#ef4444"></div>
+              <div style="height:5px;width:70px;border-radius:3px;background:#ef4444;opacity:0.7"></div>
+            </div>
+            <div style="display:flex;gap:4px">
+              ${['40px','48px'].map(w=>`<div style="height:5px;width:${w};border-radius:3px;background:var(--outline-variant)"></div>`).join('')}
+            </div>
+          </div>
+        </div>`;
+
     default:
       return `<div class="preview-mockup" style="align-items:center;font-size:2.5rem">🔧</div>`;
   }
