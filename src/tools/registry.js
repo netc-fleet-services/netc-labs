@@ -21,6 +21,16 @@ const registry = [
     module: "https://cdn.jsdelivr.net/gh/netc-fleet-services/driver-inspections-tracker@main/hub/Tool.js",
     tags: ["compliance", "inspections", "drivers"],
     previewType: "driver-inspections"
+  },
+  {
+    name: "Fleet Maintenance Tracker",
+    slug: "maintenance-tracker",
+    description: "Track fleet vehicle status across Ready, Known Issues, and Out of Service states. Log driver notes, mechanic notes, PM due dates, and waiting-on status in one dashboard.",
+    repo: "https://github.com/netc-fleet-services/maintenance-tracker",
+    // Points to hub/Tool.js inside the tool's own repo, served via jsDelivr CDN.
+    module: "https://cdn.jsdelivr.net/gh/netc-fleet-services/maintenance-tracker@main/hub/Tool.js",
+    tags: ["fleet", "maintenance", "status"],
+    previewType: "maintenance-tracker"
   }
 ];
 
