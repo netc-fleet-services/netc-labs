@@ -2,32 +2,34 @@
    THEME VARIABLES
    ===================== */
 
+/* NETC Fleet — Midnight (Dark) */
 html.theme-dark {
-  --surface:             #0d0d0d;
-  --surface-container:   #161616;
-  --surface-high:        #222222;
-  --on-surface:          #f0f0f0;
-  --on-surface-muted:    #888888;
-  --outline:             #2e2e2e;
-  --outline-variant:     #1f1f1f;
-  --primary:             #60a5fa;
-  --primary-container:   #1e3a6e;
-  --on-primary-container:#bfdbfe;
+  --surface:             #0a0a0a;
+  --surface-container:   #111111;
+  --surface-high:        #1c1c1c;
+  --on-surface:          #f0ece4;
+  --on-surface-muted:    #8a7e6e;
+  --outline:             #2e2820;
+  --outline-variant:     #1e1b17;
+  --primary:             #D4943A;
+  --primary-container:   #2d1e08;
+  --on-primary-container:#f0c87a;
   --error:               #f87171;
   color-scheme: dark;
 }
 
+/* NETC Fleet — Daylight (Light) */
 html.theme-light {
-  --surface:             #f5f5f5;
+  --surface:             #f7f5f0;
   --surface-container:   #ffffff;
-  --surface-high:        #eeeeee;
-  --on-surface:          #111111;
-  --on-surface-muted:    #666666;
-  --outline:             #d0d0d0;
-  --outline-variant:     #e4e4e4;
-  --primary:             #2563eb;
-  --primary-container:   #dbeafe;
-  --on-primary-container:#1e40af;
+  --surface-high:        #edebe6;
+  --on-surface:          #18140e;
+  --on-surface-muted:    #6b6050;
+  --outline:             #ccc0ae;
+  --outline-variant:     #e0d8cc;
+  --primary:             #8c5f14;
+  --primary-container:   #fdf2d8;
+  --on-primary-container:#4a3208;
   --error:               #dc2626;
   color-scheme: light;
 }
