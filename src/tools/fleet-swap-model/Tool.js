@@ -375,7 +375,8 @@ export function Tool() {
   // Scoped styles — all selectors prefixed with .fsm- to avoid leaking
   const style = document.createElement('style');
   style.textContent = `
-    .fsm-grid  { display:grid; grid-template-columns:300px 1fr; gap:1.5rem; }
+    .fsm-grid  { display:grid; grid-template-columns:300px minmax(0, 1fr); gap:1.5rem; }
+    .fsm-grid > * { min-width: 0; } /* prevent SVG intrinsic width from blowing out the 1fr column */
     @media(max-width:780px){ .fsm-grid { grid-template-columns:1fr; } }
 
     .fsm-panel { background:var(--surface-container); border:1px solid var(--outline-variant);
@@ -441,7 +442,8 @@ export function Tool() {
 
     .fsm-chart-title { font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
                        color:var(--on-surface-muted); margin-bottom:0.25rem; }
-    .fsm-chart-wrap svg { width:100%; height:auto; display:block; overflow:visible; }
+    .fsm-chart-wrap { width:100%; overflow:hidden; } /* contain SVG annotations */
+    .fsm-chart-wrap svg { width:100%; max-width:100%; height:auto; display:block; }
 
     .fsm-legend { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.75rem;
                   color:var(--on-surface-muted); margin-top:0.75rem; }

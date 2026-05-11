@@ -31,6 +31,16 @@ const registry = [
     module: "https://cdn.jsdelivr.net/gh/netc-fleet-services/maintenance-tracker@main/hub/Tool.js",
     tags: ["fleet", "maintenance", "status"],
     previewType: "maintenance-tracker"
+  },
+  {
+    name: "Driver Scheduler",
+    slug: "irh-driver-scheduler",
+    description: "Weekly driver scheduling grid. Click any day to set a shift or mark off-time, track coverage per day, and copy schedules week-to-week. Demo runs in your browser; the full multi-dispatcher version with realtime sync lives in the linked repo.",
+    repo: "https://github.com/netc-fleet-services/irh-driver-scheduler",
+    // Points to hub/Tool.js inside the tool's own repo, served via jsDelivr CDN.
+    module: "https://cdn.jsdelivr.net/gh/netc-fleet-services/irh-driver-scheduler@main/hub/Tool.js",
+    tags: ["scheduling", "drivers", "realtime"],
+    previewType: "irh-driver-scheduler"
   }
 ];
 
