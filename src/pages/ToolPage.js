@@ -21,7 +21,7 @@ export async function renderToolPage(slug) {
   root.innerHTML = `
     <div id="header-mount"></div>
 
-    <main class="max-w-4xl mx-auto py-10 px-6">
+    <main class="max-w-6xl mx-auto py-10 px-6">
       <!-- Breadcrumb -->
       <a href="#/" class="inline-flex items-center gap-1 text-on-surface-muted hover:text-on-surface
          transition-colors text-sm mb-8" style="text-decoration:none">
