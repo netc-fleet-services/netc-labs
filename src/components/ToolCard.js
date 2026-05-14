@@ -55,6 +55,37 @@ function buildPreview(tool) {
           }).join('')}
         </div>`;
 
+    case 'irh-driver-scheduler':
+      return `
+        <div class="preview-mockup" style="padding:10px 12px;gap:4px;overflow:hidden">
+          <!-- day-of-week header -->
+          <div style="display:flex;gap:4px;margin-bottom:5px">
+            <div style="flex:0 0 38px;height:6px;border-radius:3px;background:var(--outline-variant);opacity:0.5"></div>
+            ${['M','T','W','T','F','S','S'].map(() =>
+              `<div style="flex:1;height:6px;border-radius:3px;background:var(--outline-variant);opacity:0.7"></div>`
+            ).join('')}
+          </div>
+          <!-- driver rows with shift bars -->
+          ${[
+            [1,1,1,1,1,0,0],
+            [0,1,1,1,1,1,0],
+            [1,1,0,1,1,1,0],
+            [1,1,1,0,0,1,1],
+            [0,0,1,1,1,1,1],
+          ].map((row, i) => {
+            const colors = ['#5B89D6','#22c55e','#f59e0b','#5B89D6','#22c55e'];
+            const c = colors[i];
+            return `<div style="display:flex;gap:4px;align-items:center;margin-bottom:3px">
+              <div style="flex:0 0 38px;height:6px;border-radius:3px;background:var(--outline-variant);opacity:0.6"></div>
+              ${row.map(on =>
+                on
+                  ? `<div style="flex:1;height:8px;border-radius:2px;background:${c};opacity:0.75"></div>`
+                  : `<div style="flex:1;height:8px;border-radius:2px;background:var(--outline-variant);opacity:0.25"></div>`
+              ).join('')}
+            </div>`;
+          }).join('')}
+        </div>`;
+
     case 'maintenance-tracker':
       return `
         <div class="preview-mockup" style="padding:10px 12px;gap:5px;overflow:hidden">
