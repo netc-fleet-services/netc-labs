@@ -41,6 +41,56 @@ const registry = [
     module: "https://cdn.jsdelivr.net/gh/netc-fleet-services/irh-driver-scheduler@main/hub/Tool.js",
     tags: ["scheduling", "drivers", "realtime"],
     previewType: "irh-driver-scheduler"
+  },
+
+  // ── Internal platform apps ────────────────────────────────────────────────
+  // These are full authenticated Next.js apps that live in the netcfs-platform
+  // monorepo. They load a local mock preview via src/tools/<slug>/Tool.js.
+
+  {
+    name: "Dispatch Board",
+    slug: "dispatch-board",
+    description: "Live job scheduling and driver assignment for the towing fleet. Drag-and-drop job cards, route optimization, stacking suggestions, and shift coverage tracking.",
+    repo: "https://github.com/netc-fleet-services/netcfs-platform/tree/main/apps/transport",
+    appType: "internal",
+    tags: ["dispatch", "jobs", "drivers"],
+    previewType: "dispatch-board"
+  },
+  {
+    name: "Impound Tracker",
+    slug: "impound-tracker",
+    description: "Inventory management for impounded vehicles. Tracks aging, estimated value, disposition status (scrap vs. sell), and integrates with TowBook for photo uploads.",
+    repo: "https://github.com/netc-fleet-services/netcfs-platform/tree/main/apps/impounds",
+    appType: "internal",
+    tags: ["impounds", "inventory", "finance"],
+    previewType: "impound-tracker"
+  },
+  {
+    name: "Statement Reconciler",
+    slug: "statement-reconciler",
+    description: "Upload vendor PDF statements and QuickBooks exports to automatically match charges, surface discrepancies, and generate a variance report — across 30+ vendors.",
+    repo: "https://github.com/netc-fleet-services/netcfs-platform/tree/main/apps/statement-reconciler",
+    appType: "internal",
+    tags: ["finance", "reconciliation", "vendors"],
+    previewType: "statement-reconciler"
+  },
+  {
+    name: "Quote Calculator",
+    slug: "quote-calculator",
+    description: "Generate towing quotes with live GraphHopper routing, fuel surcharge calculation, and PDF export. Covers road service, light duty, heavy duty, and transport services.",
+    repo: "https://github.com/netc-fleet-services/netcfs-platform/tree/main/apps/quote-calculator",
+    appType: "internal",
+    tags: ["quotes", "routing", "finance"],
+    previewType: "quote-calculator"
+  },
+  {
+    name: "Fullbay WIP",
+    slug: "fullbay-wip",
+    description: "Weekly Work-In-Progress snapshot of open Fullbay service orders, broken down by shop with cost totals. Exports summary and detail spreadsheets on demand.",
+    repo: "https://github.com/netc-fleet-services/netcfs-platform/tree/main/apps/fullbay-wip",
+    appType: "internal",
+    tags: ["fullbay", "shop", "reports"],
+    previewType: "fullbay-wip"
   }
 ];
 

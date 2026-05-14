@@ -121,6 +121,170 @@ function buildPreview(tool) {
           </div>
         </div>`;
 
+    case 'dispatch-board':
+      return `
+        <div class="preview-mockup" style="padding:8px 10px;gap:4px;overflow:hidden">
+          <!-- tab bar -->
+          <div style="display:flex;gap:5px;margin-bottom:6px">
+            <div style="height:6px;width:52px;border-radius:3px;background:var(--primary);opacity:0.85"></div>
+            <div style="height:6px;width:40px;border-radius:3px;background:var(--outline-variant)"></div>
+            <div style="height:6px;width:44px;border-radius:3px;background:var(--outline-variant)"></div>
+          </div>
+          <!-- job cards row 1 -->
+          <div style="display:flex;gap:5px;margin-bottom:4px">
+            ${[['#60a5fa','62px'],['#f59e0b','50px'],['#22c55e','56px']].map(([c,w])=>`
+              <div style="flex:1;background:var(--surface-high);border:1px solid var(--outline-variant);border-radius:5px;padding:4px 5px">
+                <div style="width:${w};height:5px;border-radius:3px;background:${c};opacity:0.75;margin-bottom:3px"></div>
+                <div style="width:85%;height:4px;border-radius:3px;background:var(--outline-variant)"></div>
+              </div>`).join('')}
+          </div>
+          <!-- job cards row 2 -->
+          <div style="display:flex;gap:5px">
+            ${[['#a78bfa','48px'],['#60a5fa','58px'],['#ef4444','44px']].map(([c,w])=>`
+              <div style="flex:1;background:var(--surface-high);border:1px solid var(--outline-variant);border-radius:5px;padding:4px 5px">
+                <div style="width:${w};height:5px;border-radius:3px;background:${c};opacity:0.75;margin-bottom:3px"></div>
+                <div style="width:70%;height:4px;border-radius:3px;background:var(--outline-variant)"></div>
+              </div>`).join('')}
+          </div>
+          <!-- bottom status bar -->
+          <div style="display:flex;gap:4px;margin-top:5px;align-items:center">
+            <div style="width:8px;height:8px;border-radius:50%;background:#22c55e"></div>
+            <div style="height:4px;width:35px;border-radius:3px;background:var(--outline-variant)"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#f59e0b;margin-left:6px"></div>
+            <div style="height:4px;width:28px;border-radius:3px;background:var(--outline-variant)"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#ef4444;margin-left:6px"></div>
+            <div style="height:4px;width:24px;border-radius:3px;background:var(--outline-variant)"></div>
+          </div>
+        </div>`;
+
+    case 'impound-tracker':
+      return `
+        <div class="preview-mockup" style="padding:8px 10px;gap:4px;overflow:hidden">
+          <!-- metric chips -->
+          <div style="display:flex;gap:5px;margin-bottom:6px">
+            ${[['24 Vehicles','var(--primary-container)','var(--on-primary-container)'],
+               ['$142k Value','rgba(34,197,94,0.15)','#22c55e'],
+               ['6 Pending','rgba(245,158,11,0.15)','#f59e0b']].map(([label,bg,color])=>`
+              <div style="flex:1;background:${bg};border-radius:5px;padding:3px 5px;text-align:center">
+                <div style="font-size:5.5px;font-weight:700;color:${color};font-family:Inter,sans-serif;white-space:nowrap">${label}</div>
+              </div>`).join('')}
+          </div>
+          <!-- vehicle grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px">
+            ${[
+              ['#22c55e','0–30d'],['#22c55e','0–30d'],['#f59e0b','1–3mo'],
+              ['#f59e0b','1–3mo'],['#fb923c','3–6mo'],['#ef4444','6–12mo']
+            ].map(([c,age])=>`
+              <div style="background:var(--surface-high);border:1px solid var(--outline-variant);border-radius:4px;padding:4px">
+                <div style="height:18px;background:var(--outline-variant);border-radius:3px;margin-bottom:3px"></div>
+                <div style="display:flex;align-items:center;gap:2px">
+                  <div style="width:5px;height:5px;border-radius:50%;background:${c};flex-shrink:0"></div>
+                  <div style="font-size:4.5px;color:var(--on-surface-muted);font-family:Inter,sans-serif">${age}</div>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>`;
+
+    case 'statement-reconciler':
+      return `
+        <div class="preview-mockup" style="padding:8px 10px;overflow:hidden">
+          <!-- vendor selector -->
+          <div style="display:flex;gap:5px;margin-bottom:6px;align-items:center">
+            <div style="flex:1;height:18px;background:var(--surface-high);border:1px solid var(--outline);border-radius:4px;display:flex;align-items:center;padding:0 6px">
+              <div style="height:5px;width:70px;border-radius:3px;background:var(--outline-variant)"></div>
+            </div>
+            <div style="height:18px;width:40px;background:var(--primary-container);border-radius:4px;display:flex;align-items:center;justify-content:center">
+              <div style="font-size:5px;font-weight:700;color:var(--on-primary-container);font-family:Inter,sans-serif">RUN</div>
+            </div>
+          </div>
+          <!-- file upload zones -->
+          <div style="display:flex;gap:4px;margin-bottom:6px">
+            ${['Statement PDF','QB Export'].map(label=>`
+              <div style="flex:1;border:1px dashed var(--outline);border-radius:4px;padding:5px;text-align:center">
+                <div style="font-size:4.5px;color:var(--on-surface-muted);font-family:Inter,sans-serif;margin-bottom:2px">${label}</div>
+                <div style="height:4px;width:60%;margin:0 auto;border-radius:3px;background:var(--outline-variant)"></div>
+              </div>`).join('')}
+          </div>
+          <!-- match results -->
+          <div style="display:flex;gap:4px">
+            <div style="flex:1;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:4px;padding:4px 5px">
+              <div style="font-size:5px;color:#22c55e;font-weight:700;font-family:Inter,sans-serif;margin-bottom:2px">MATCHED</div>
+              <div style="font-size:8px;font-weight:800;color:#22c55e;font-family:Inter,sans-serif">47</div>
+            </div>
+            <div style="flex:1;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:4px 5px">
+              <div style="font-size:5px;color:#ef4444;font-weight:700;font-family:Inter,sans-serif;margin-bottom:2px">VARIANCE</div>
+              <div style="font-size:8px;font-weight:800;color:#ef4444;font-family:Inter,sans-serif">3</div>
+            </div>
+            <div style="flex:1;background:var(--surface-high);border:1px solid var(--outline-variant);border-radius:4px;padding:4px 5px">
+              <div style="font-size:5px;color:var(--on-surface-muted);font-weight:700;font-family:Inter,sans-serif;margin-bottom:2px">DELTA</div>
+              <div style="font-size:8px;font-weight:800;color:var(--primary);font-family:Inter,sans-serif">$412</div>
+            </div>
+          </div>
+        </div>`;
+
+    case 'quote-calculator':
+      return `
+        <div class="preview-mockup" style="padding:8px 10px;overflow:hidden">
+          <!-- service type chips -->
+          <div style="display:flex;gap:3px;margin-bottom:6px">
+            ${['Light Duty','Heavy Duty','Transport','Road Svc'].map((label,i)=>`
+              <div style="padding:2px 5px;border-radius:99px;font-size:4.5px;font-weight:700;
+                font-family:Inter,sans-serif;white-space:nowrap;
+                background:${i===0?'var(--primary-container)':'var(--surface-high)'};
+                color:${i===0?'var(--on-primary-container)':'var(--on-surface-muted)'};
+                border:1px solid ${i===0?'transparent':'var(--outline-variant)'}">
+                ${label}
+              </div>`).join('')}
+          </div>
+          <!-- address inputs -->
+          <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:6px">
+            ${['Pickup address…','Drop-off address…'].map(ph=>`
+              <div style="background:var(--surface-high);border:1px solid var(--outline);border-radius:4px;padding:4px 6px;display:flex;align-items:center;gap:5px">
+                <div style="width:5px;height:5px;border-radius:50%;background:var(--primary);opacity:0.7;flex-shrink:0"></div>
+                <div style="height:4px;flex:1;border-radius:3px;background:var(--outline-variant)"></div>
+              </div>`).join('')}
+          </div>
+          <!-- result box -->
+          <div style="background:var(--surface);border:1px solid var(--outline-variant);border-radius:4px;padding:5px 6px;display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="height:4px;width:38px;border-radius:3px;background:var(--outline-variant);margin-bottom:2px"></div>
+              <div style="height:4px;width:28px;border-radius:3px;background:var(--outline-variant)"></div>
+            </div>
+            <div style="font-size:11px;font-weight:800;color:var(--primary);font-family:Inter,sans-serif">$284</div>
+          </div>
+        </div>`;
+
+    case 'fullbay-wip':
+      return `
+        <div class="preview-mockup" style="padding:8px 10px;overflow:hidden">
+          <!-- run button + status -->
+          <div style="display:flex;gap:5px;align-items:center;margin-bottom:7px">
+            <div style="height:18px;padding:0 10px;background:var(--primary-container);border-radius:4px;display:flex;align-items:center">
+              <div style="font-size:5px;font-weight:700;color:var(--on-primary-container);font-family:Inter,sans-serif">Run WIP Snapshot</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px">
+              <div style="width:5px;height:5px;border-radius:50%;background:#22c55e"></div>
+              <div style="height:4px;width:25px;border-radius:3px;background:var(--outline-variant)"></div>
+            </div>
+          </div>
+          <!-- shop breakdown table -->
+          ${[
+            ['Dallas Shop','$24,180','8'],
+            ['Houston Shop','$18,450','6'],
+            ['San Antonio','$9,320','4'],
+          ].map(([shop,total,jobs],i)=>`
+            <div style="display:flex;align-items:center;gap:4px;margin-bottom:${i<2?'3px':'0'};padding:3px 4px;background:${i%2===0?'var(--surface-high)':'transparent'};border-radius:3px">
+              <div style="flex:2;height:4px;border-radius:3px;background:var(--outline-variant)"></div>
+              <div style="font-size:6px;font-weight:700;color:var(--primary);font-family:Inter,sans-serif;flex-shrink:0">${total}</div>
+              <div style="font-size:5px;color:var(--on-surface-muted);font-family:Inter,sans-serif;flex-shrink:0">${jobs} jobs</div>
+            </div>`).join('')}
+          <!-- grand total -->
+          <div style="margin-top:5px;border-top:1px solid var(--outline-variant);padding-top:4px;display:flex;justify-content:space-between;align-items:center">
+            <div style="height:4px;width:40px;border-radius:3px;background:var(--outline-variant)"></div>
+            <div style="font-size:9px;font-weight:800;color:var(--on-surface);font-family:Inter,sans-serif">$51,950</div>
+          </div>
+        </div>`;
+
     default:
       return `<div class="preview-mockup" style="align-items:center;font-size:2.5rem">🔧</div>`;
   }
